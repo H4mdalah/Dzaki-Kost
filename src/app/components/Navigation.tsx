@@ -19,7 +19,7 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-emerald-600">Dzaki Kost & Homestay Syariah</h1>
+            <h2 className="text-emerald-600 font-bold">Dzaki Kost & Homestay Syariah</h2>
           </div>
 
           {/* Desktop Navigation */}
