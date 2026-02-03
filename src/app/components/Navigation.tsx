@@ -18,8 +18,9 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h2 className="text-emerald-600 font-bold">Dzaki Kost & Homestay Syariah</h2>
+          <div className="flex">
+            <img className="hidden lg:flex w-15 h-15 " src="/images/Logo.jpeg" alt="Logo" />
+            <h2 className="flex justify-center align-items items-center text-emerald-600 font-bold">Dzaki Kost & Homestay Syariah</h2>
           </div>
 
           {/* Desktop Navigation */}

@@ -5,7 +5,7 @@ export function Services() {
     {
       icon: Home,
       title: 'Kost',
-      description: 'Kos yang nyaman dan terjangkau baik bagi mahasiswi maupun umum.',
+      description: 'Kost yang nyaman dan terjangkau baik bagi mahasiswi maupun umum. Memiliki fasilitas yang lengkap guna menunjang kebutuhan penghuni.',
       features: ['Sewa bulanan maupun tahunan', 'Kamar dengan fasilitas yang lengkap', 'Dapur Umum'],
     },
     {
@@ -22,7 +22,7 @@ export function Services() {
         <div className="text-center mb-16">
           <h2 className="text-emerald-600 mb-4">Layanan Kami</h2>
           <p className="max-w-2xl mx-auto text-gray-600">
-            Kami menyediakan dua pilihan akomodasi yang berbeda untuk memenuhi kebutuhan dan preferensi Anda
+            Kami menyediakan pilihan guna memenuhi kebutuhan dan keinginan Anda
           </p>
         </div>
 

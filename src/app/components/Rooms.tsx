@@ -27,7 +27,7 @@ export function Rooms() {
         <div className="text-center mb-16">
           <h2 className="text-emerald-600 mb-4">Kamar yang Tersedia</h2>
           <p className="max-w-2xl mx-auto text-gray-600">
-            Kami menyediakan berbagai pilihan kamar yang nyaman dan terjangkau
+            Kami menyediakan berbagai pilihan kamar sesuai kebutuhan anda
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export function Rooms() {
                 </div>
 
                 <button className="w-full mt-6 bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors">
-                  Book This Room
+                  Pesan Kamar
                 </button>
               </div>
             </div>

@@ -18,10 +18,10 @@ export function About() {
               Didirikan pada tahun 2025, Dzaki Kost & Homestay Syariah telah menjadi pilihan utama bagi mereka yang mencari akomodasi yang nyaman, terjangkau, dan sesuai dengan prinsip-prinsip syariah. Kami memahami kebutuhan para pelajar, profesional, dan keluarga yang menginginkan lingkungan yang aman dan ramah.
             </p>
             <p className="text-gray-600 mb-6">
-              Dzaki Kost & Homestay Syariah menyediakan fasilitas lengkap yang mendukung gaya hidup modern sekaligus mematuhi nilai-nilai Islam yang cocok bagi penghuni kami baik dari kalangan pelajar, profesional muda, maupun keluarga Muslim.
+              Dzaki Kost & Homestay Syariah menyediakan fasilitas lengkap untuk mendukung kebutuhan penghuni sekaligus dijalankan sesuai nilai-nilai Islam sehingga cocok untuk penghuni baik dari kalangan pelajar, profesional muda, maupun keluarga Muslim.
             </p>
             <p className="text-gray-600 mb-8">
-              Kami berkomitmen untuk menciptakan komunitas di mana penghuni merasa seperti di rumah sendiri, dengan fasilitas yang lengkap dan suasana yang mendukung produktivitas serta pertumbuhan spiritual.
+              Kami berkomitmen untuk menciptakan lingkungan di mana penghuni merasa Dzaki Kost & Homestay Syariah seperti rumah mereka sendiri.
             </p>
 
             <div className="flex flex-wrap gap-4">
