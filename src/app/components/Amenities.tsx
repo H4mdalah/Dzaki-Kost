@@ -44,25 +44,25 @@ export function Amenities() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1563493465960-597147b0a2fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBraXRjaGVuJTIwZGluaW5nfGVufDF8fHx8MTc2NzI0OTg5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Shared Kitchen"
-              className="w-full h-48 object-cover rounded-xl mb-6"
+              src="/images/park.jpeg"
+              alt="Parking Area"
+              className="w-full h-72 object-cover rounded-xl mb-6"
             />
-            <h3 className="mb-3">Dapur Umum</h3>
+            <h3 className="mb-3">Tempat Parkir Luas</h3>
             <p className="text-gray-600">
-              Dapur umum yang dapat digunakan bersama untuk menyiapkan makanan dan bersosialisasi dengan penghuni lainnya.
+              Tempat parkir yang aman dan luas untuk kendaraan Anda. Anda dapat membawa sepeda motor ataupun mobil.
             </p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1763410723546-db98ef034af5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmF5ZXIlMjByb29tJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzY3MjgzNTEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Prayer Room"
-              className="w-full h-48 object-cover rounded-xl mb-6"
+              src="/images/strategis.jpeg"
+              alt="Strategic Location"
+              className="w-full h-72 object-cover rounded-xl mb-6"
             />
-            <h3 className="mb-3">Musholla</h3>
+            <h3 className="mb-3">Lokasi Strategis</h3>
             <p className="text-gray-600">
-              Tempat ibadah khusus bagi penghuni kami, dilengkapi dengan sajadah dan fasilitas wudhu untuk kenyamanan beribadah.
+              Lokasi strategis yang dekat dengan Indomaret dan fasilitas umum lainnya guna untuk memenuhi kebutuhan sehari-hari Anda.
             </p>
           </div>
         </div>

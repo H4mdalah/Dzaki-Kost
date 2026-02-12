@@ -4,20 +4,20 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 export function Rooms() {
   const rooms = [
     {
-      title: 'Kamar Standar',
-      image: 'https://images.unsplash.com/photo-1611095459865-47682ae3c41c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3p5JTIwYmVkcm9vbSUyMGludGVyaW9yfGVufDF8fHx8MTc2NzI4MzUxMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      title: 'Kamar Tempat Tidur Biasa',
+      image: '/images/singlebed.jpeg',
       period: 'Bulanan atau Tahunan',
       capacity: '1 Orang',
       bed: 'Single Bed',
-      features: ['Free WiFi', 'Kamar Mandi Dalam', 'Meja Belajar', 'Cocok bagi pelajar', 'Harga terjangkau'],
+      features: ['Free WiFi', 'Kamar Mandi Dalam', 'AC',  'Meja Belajar', 'Lemari' , 'Private Room'],
     },
     {
-      title: 'Kamar Premium',
-      image: 'https://images.unsplash.com/photo-1669935357836-193c63861977?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpc2xhbWljJTIwaG9tZXN0YXklMjByb29tfGVufDF8fHx8MTc2NzI4MzUxMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      title: 'Kamar Tempat Tidur Tingkat',
+      image: '/images/doublebed.jpeg',
       period: 'Bulanan atau Tahunan',
       capacity: '2 Orang',
       bed: 'Double Bed',
-      features: ['Free WiFi', 'Kamar Mandi Dalam', 'AC', 'Meja Belajar', 'Kamar yang lebih luas'],
+      features: ['Free WiFi', 'Kamar Mandi Dalam', 'AC', 'Meja Belajar', 'Lemari', 'Sharing Room'],
     },
   ];
 
@@ -37,7 +37,7 @@ export function Rooms() {
               key={index}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
             >
-              <div className="relative h-64">
+              <div className="relative h-96">
                 <ImageWithFallback
                   src={room.image}
                   alt={room.title}
