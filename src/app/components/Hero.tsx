@@ -6,8 +6,8 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <ImageWithFallback
-          src="https://images.unsplash.com/photo-1709056330726-00a8ea31059a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBib2FyZGluZyUyMGhvdXNlJTIwZXh0ZXJpb3J8ZW58MXx8fHwxNzY3MjgzNTA5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-          alt="Boarding House Exterior"
+          src="/images/home.jpeg"
+          alt="Dzaki Kost & Syariah Eksterior"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>

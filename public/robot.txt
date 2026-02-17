@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dzaki-kost.vercel.app/sitemap.xml
+Sitemap: https://dzakikost.my.id/sitemap.xml
