@@ -1,5 +1,22 @@
 import { Facebook, Instagram, Twitter, Mail } from 'lucide-react';
 
+ const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      const offset = 80; // Height of fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -44,17 +61,18 @@ export function Footer() {
             <h4 className="text-white mb-4">Akses Cepat</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <a 
+                href="#home" className="text-gray-400 hover:text-emerald-400 transition-colors" onClick={(e) => handleSmoothScroll(e, '#home')}>
                   Beranda
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <a href="#services" className="text-gray-400 hover:text-emerald-400 transition-colors" onClick={(e) => handleSmoothScroll(e, '#services')}>
                   Layanan
                 </a>
               </li>
               <li>
-                <a href="#rooms" className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <a href="#rooms" className="text-gray-400 hover:text-emerald-400 transition-colors" onClick={(e) => handleSmoothScroll(e, '#rooms')}>
                   Kamar
                 </a>
               </li>

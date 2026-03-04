@@ -35,13 +35,13 @@ export function Rooms() {
           {rooms.map((room, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
             >
               <div className="relative h-96">
                 <ImageWithFallback
                   src={room.image}
                   alt={room.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
               <div className="p-6">
@@ -70,7 +70,7 @@ export function Rooms() {
                   ))}
                 </div>
 
-                <button className="w-full mt-6 bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors">
+                <button className="w-full mt-6 bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-all duration-300 hover:shadow-lg active:scale-95">
                   Pesan Kamar
                 </button>
               </div>
