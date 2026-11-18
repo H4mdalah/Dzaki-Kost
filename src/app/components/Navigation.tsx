@@ -1,107 +1,103 @@
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useEffect, useState } from 'react';
+import { NAV_ITEMS, SITE, whatsappLink } from '../site';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const navItems = [
-    { label: 'Beranda', href: '#home' },
-    { label: 'Layanan', href: '#services' },
-    { label: 'Kamar', href: '#rooms' },
-    { label: 'Fasilitas', href: '#amenities' },
-    { label: 'Tentang Kami', href: '#about' },
-    { label: 'Hubungi Kami', href: '#contact' },
-  ];
-
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const offset = 80; // Height of fixed navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex">
-            <img className="hidden lg:flex w-15 h-15 " src="/images/Logo.jpeg" alt="Logo" />
-            <h2 className="flex justify-center align-items items-center text-emerald-600 font-bold">Dzaki Kost & Homestay Syariah</h2>
-          </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        scrolled || isOpen
+          ? 'bg-white/75 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav aria-label="Navigasi utama" className="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+        <a href="#beranda" className="flex items-center gap-2" aria-label={`${SITE.name} — kembali ke atas`}>
+          <img src="/images/logo-nobg.png" alt="" width={32} height={32} className="w-8 h-8 object-contain" />
+          <span className="text-[15px] font-semibold tracking-tight text-ink">
+            Dzaki Kost<span className="hidden sm:inline text-ink-muted font-normal"> & Homestay Syariah</span>
+          </span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleSmoothScroll(e, item.href)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors"
-              >
+        <ul className="hidden md:flex items-center gap-7">
+          {NAV_ITEMS.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} className="text-[13px] text-ink/80 hover:text-ink transition-colors">
                 {item.label}
               </a>
-            ))}
-          </div>
+            </li>
+          ))}
+        </ul>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <a
-              href="#contact"
-              onClick={(e) => handleSmoothScroll(e, '#contact')}
-              className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors"
-            >
-              Pesan Sekarang
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-emerald-600"
+        <div className="flex items-center gap-2">
+          <a
+            href={whatsappLink('Assalamualaikum, saya ingin menanyakan ketersediaan kamar di Dzaki Kost.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex bg-emerald-600 hover:bg-emerald-700 text-white text-[13px] font-medium px-4 py-1.5 rounded-full transition-colors"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            Pesan Sekarang
+          </a>
+          <button
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            className="md:hidden p-2 -mr-2 text-ink"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => {
-                  handleSmoothScroll(e, item.href);
-                  setIsOpen(false);
-                }}
-                className="block px-3 py-2 text-gray-700 hover:text-emerald-600 hover:bg-gray-50 rounded-md"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 bg-emerald-600 text-white text-center rounded-lg hover:bg-emerald-700"
-            >
-              Pesan Sekarang
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            id="mobile-menu"
+            className="md:hidden overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ul className="px-5 pt-2 pb-6 space-y-1">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block py-3 text-2xl font-semibold tracking-tight text-ink"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+              <li className="pt-4">
+                <a
+                  href={whatsappLink('Assalamualaikum, saya ingin menanyakan ketersediaan kamar di Dzaki Kost.')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-emerald-600 text-white font-medium py-3 rounded-full"
+                >
+                  Pesan via WhatsApp
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

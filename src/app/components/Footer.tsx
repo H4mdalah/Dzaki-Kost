@@ -1,114 +1,55 @@
-import { Facebook, Instagram, Twitter, Mail } from 'lucide-react';
-
- const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const offset = 80; // Height of fixed navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+import { NAV_ITEMS, SITE, whatsappLink } from '../site';
+import { ArchEdge, GeometricPattern } from './Ornaments';
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* About */}
+    <footer className="relative isolate overflow-hidden bg-forest-950 text-[13px] text-white/65">
+      <ArchEdge className="absolute top-0 inset-x-0 text-mint" flip />
+      <GeometricPattern className="absolute inset-0 -z-10 text-leaf/[0.06]" size={64} />
+      <div className="max-w-6xl mx-auto px-5 pt-16 pb-10">
+        <div className="grid sm:grid-cols-3 gap-8 pb-8 border-b border-white/10">
           <div>
-            <h4 className="text-white mb-4">Dzaki Kost & Homestay Syariah</h4>
-            <p className="text-gray-400 mb-4">
-              Menyediakan akomodasi nyaman dan terjangkau dengan nilai-nilai Islami 2025.
-            </p>
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="bg-gray-800 p-2 rounded-full hover:bg-emerald-600 transition-colors"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="bg-gray-800 p-2 rounded-full hover:bg-emerald-600 transition-colors"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="#"
-                className="bg-gray-800 p-2 rounded-full hover:bg-emerald-600 transition-colors"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="#"
-                className="bg-gray-800 p-2 rounded-full hover:bg-emerald-600 transition-colors"
-              >
-                <Mail size={20} />
-              </a>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-grid place-items-center w-12 h-12 rounded-2xl bg-white">
+                <img src="/images/logo-nobg.png" alt="" width={40} height={40} className="w-10 h-10 object-contain" />
+              </span>
+              <p className="font-semibold text-white text-[15px] leading-tight">{SITE.name}</p>
             </div>
+            <address className="not-italic leading-relaxed">
+              {SITE.address}
+            </address>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-white mb-4">Akses Cepat</h4>
-            <ul className="space-y-2">
-              <li>
-                <a 
-                href="#home" className="text-gray-400 hover:text-emerald-400 transition-colors" onClick={(e) => handleSmoothScroll(e, '#home')}>
-                  Beranda
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-400 hover:text-emerald-400 transition-colors" onClick={(e) => handleSmoothScroll(e, '#services')}>
-                  Layanan
-                </a>
-              </li>
-              <li>
-                <a href="#rooms" className="text-gray-400 hover:text-emerald-400 transition-colors" onClick={(e) => handleSmoothScroll(e, '#rooms')}>
-                  Kamar
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  Tentang Kami
-                </a>
-              </li>
+          <nav aria-label="Navigasi footer">
+            <p className="font-semibold text-leaf mb-2">Jelajahi</p>
+            <ul className="space-y-1.5">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="hover:text-white hover:underline">{item.label}</a>
+                </li>
+              ))}
             </ul>
-          </div>
-
-          {/* Services */}
+          </nav>
           <div>
-            <h4 className="text-white mb-4">Layanan Kami</h4>
-            <ul className="space-y-2">
-              <li className="text-gray-400">Kamar Kost</li>
-              <li className="text-gray-400">Penginapan Syariah</li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-white mb-4">Kontak dan Informasi</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>Jln Rajainal Siregar no 189, Padangsidimpuan</li>
-              <li>0852-0608-6826</li>
-              <li>karuniajayacv@gmail.com</li>
-              <li>Setiap Hari pukul 09.00 - 18.00 WIB</li>
+            <p className="font-semibold text-leaf mb-2">Hubungi</p>
+            <ul className="space-y-1.5">
+              <li>
+                <a href={whatsappLink('Assalamualaikum, Dzaki Kost.')} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
+                  WhatsApp {SITE.phoneDisplay}
+                </a>
+              </li>
+              <li><a href={`mailto:${SITE.email}`} className="hover:text-white hover:underline">{SITE.email}</a></li>
+              <li>{SITE.hours}</li>
+              <li>
+                <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-white hover:underline">
+                  Buka di Google Maps
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-          <p>&copy; 2026 Dzaki Kost & Homestay Syariah. All rights reserved.</p>
-        </div>
+        <p className="pt-6">
+          &copy; {new Date().getFullYear()} {SITE.name}. Kost & penginapan syariah di Kota Padangsidimpuan, Sumatera Utara.
+        </p>
       </div>
     </footer>
   );

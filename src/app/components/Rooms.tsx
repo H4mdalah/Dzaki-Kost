@@ -1,80 +1,94 @@
-import { Users, Bed, Wifi, CreditCard } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Bed, CalendarDays, Users } from 'lucide-react';
+import { Reveal, SectionHeading } from './Reveal';
+import { whatsappLink } from '../site';
+
+const rooms = [
+  {
+    title: 'Kamar Single',
+    subtitle: 'Privat. Fokus. Milik Anda sendiri.',
+    image: '/images/singlebed.jpeg',
+    alt: 'Kamar single bed di Dzaki Kost lengkap dengan AC, lemari, dan meja belajar',
+    period: 'Bulanan atau tahunan',
+    capacity: '1 orang',
+    bed: 'Single bed',
+    features: ['Kamar privat', 'Kamar mandi dalam', 'AC', 'WiFi gratis', 'Meja belajar', 'Lemari pakaian'],
+  },
+  {
+    title: 'Kamar Bertingkat',
+    subtitle: 'Hemat bersama teman sekamar.',
+    image: '/images/doublebed.jpeg',
+    alt: 'Kamar dengan tempat tidur tingkat untuk dua orang di Dzaki Kost',
+    period: 'Bulanan atau tahunan',
+    capacity: '2 orang',
+    bed: 'Tempat tidur tingkat',
+    features: ['Kamar berbagi', 'Kamar mandi dalam', 'AC', 'WiFi gratis', 'Meja belajar', 'Lemari pakaian'],
+  },
+];
 
 export function Rooms() {
-  const rooms = [
-    {
-      title: 'Kamar Tempat Tidur Biasa',
-      image: '/images/singlebed.jpeg',
-      period: 'Bulanan atau Tahunan',
-      capacity: '1 Orang',
-      bed: 'Single Bed',
-      features: ['Free WiFi', 'Kamar Mandi Dalam', 'AC',  'Meja Belajar', 'Lemari' , 'Private Room'],
-    },
-    {
-      title: 'Kamar Tempat Tidur Tingkat',
-      image: '/images/doublebed.jpeg',
-      period: 'Bulanan atau Tahunan',
-      capacity: '2 Orang',
-      bed: 'Double Bed',
-      features: ['Free WiFi', 'Kamar Mandi Dalam', 'AC', 'Meja Belajar', 'Lemari', 'Sharing Room'],
-    },
-  ];
-
   return (
-    <section id="rooms" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-emerald-600 mb-4">Kamar yang Tersedia</h2>
-          <p className="max-w-2xl mx-auto text-gray-600">
-            Kami menyediakan berbagai pilihan kamar sesuai kebutuhan anda
-          </p>
-        </div>
+    <section id="kamar" aria-labelledby="kamar-title" className="bg-white py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-5">
+        <SectionHeading
+          id="kamar-title"
+          eyebrow="Pilihan Kamar"
+          title="Kamar yang pas untuk Anda."
+          lead="Setiap kamar sudah dilengkapi AC, kamar mandi dalam, dan WiFi. Tidak perlu repot membawa banyak barang."
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {rooms.map((room, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
-            >
-              <div className="relative h-96">
-                <ImageWithFallback
-                  src={room.image}
-                  alt={room.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+        <div className="grid md:grid-cols-2 gap-5">
+          {rooms.map((room, i) => (
+            <Reveal key={room.title} delay={i * 0.1} as="article">
+              <div className="group h-full bg-mint rounded-[28px] overflow-hidden flex flex-col">
+                <div className="p-8 md:p-10 pb-0 text-center">
+                  <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink">{room.title}</h3>
+                  <p className="mt-2 text-lg text-ink-muted">{room.subtitle}</p>
+                </div>
+
+                <div className="mx-6 md:mx-10 mt-8 rounded-t-[160px] md:rounded-t-[220px] rounded-b-2xl overflow-hidden aspect-[4/3] ring-4 ring-white shadow-lg shadow-forest-900/10">
+                  <img
+                    src={room.image}
+                    alt={room.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="p-8 md:p-10 flex-1 flex flex-col">
+                  <dl className="grid grid-cols-3 gap-4 text-center pb-8 border-b border-black/10">
+                    {[
+                      { icon: Users, label: 'Kapasitas', value: room.capacity },
+                      { icon: Bed, label: 'Tempat tidur', value: room.bed },
+                      { icon: CalendarDays, label: 'Sewa', value: room.period },
+                    ].map(({ icon: Icon, label, value }) => (
+                      <div key={label}>
+                        <Icon className="mx-auto text-emerald-600 mb-2" size={24} strokeWidth={1.6} aria-hidden />
+                        <dt className="sr-only">{label}</dt>
+                        <dd className="text-sm text-ink leading-snug">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+
+                  <ul className="flex flex-wrap gap-2 pt-8 flex-1 content-start">
+                    {room.features.map((f) => (
+                      <li key={f} className="text-sm text-forest-800 bg-white border border-mint-deep rounded-full px-3.5 py-1.5">
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={whatsappLink(`Assalamualaikum, saya ingin memesan ${room.title} di Dzaki Kost. Apakah masih tersedia?`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 block text-center bg-emerald-600 hover:bg-emerald-700 text-white text-[17px] font-medium py-3 rounded-full transition-colors"
+                  >
+                    Pesan {room.title}
+                  </a>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="mb-4">{room.title}</h3>
-                <div className="flex items-baseline gap-2 mb-6">
-                  <span className="text-gray-500">{room.period}</span>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <Users size={20} className="text-emerald-600" />
-                    <span>{room.capacity}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <Bed size={20} className="text-emerald-600" />
-                    <span>{room.bed}</span>
-                  </div>
-                </div>
-
-                <div className="border-t pt-4 space-y-2">
-                  {room.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <button className="w-full mt-6 bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-all duration-300 hover:shadow-lg active:scale-95">
-                  Pesan Kamar
-                </button>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

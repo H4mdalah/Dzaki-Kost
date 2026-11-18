@@ -179,3 +179,17 @@
     line-height: 1.5;
   }
 }
+
+/* Brand palette — sampled from the Dzaki Kost logo (lime → teal-green, forest-green lettering). */
+@theme {
+  --color-ink: #102b23;
+  --color-ink-muted: #56695f;
+  --color-mint: #f1f7f1;
+  --color-mint-deep: #e2efe1;
+  --color-leaf: #c4ea7a;
+  --color-leaf-soft: #def3b5;
+  --color-forest-700: #14604a;
+  --color-forest-800: #0f4c3a;
+  --color-forest-900: #0b3a2d;
+  --color-forest-950: #072820;
+}
